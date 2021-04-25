@@ -1,2 +1,4 @@
 # SpotiBot
- A Bot-type app to assist in controlling spotify 
+A voice controlled bot-type app to control Spotify
+
+
