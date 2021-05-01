@@ -85,16 +85,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResults(Bundle results) {
-
-            }
-
-            @Override
-            public void onPartialResults(Bundle partialResults) {
-                ArrayList<String> matches = partialResults.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 String string="";
                 if(matches!=null)
                 {
                     string = matches.get(0);
+                    string = string.toLowerCase();
                     textView.setText(string);
 
                     if(string.contains("playback")) {
@@ -109,18 +105,21 @@ public class MainActivity extends AppCompatActivity {
                     else if(string.contains("next")){
                         mSpotifyAppRemote.getPlayerApi().skipNext();
                     }
-                    else{
-                        textView.setText("Didn't get that! Try Again!");
+                    else if(string.contains("shuffle")){
+                        mSpotifyAppRemote.getPlayerApi().setShuffle(true);
                     }
-//                    else if(string.contains("shuffle")){
-//                        mSpotifyAppRemote.getPlayerApi().toggleShuffle();
+//                    else{
+//                        textView.setText("Didn't get that! Try Again!");
 //                    }
                 }
             }
 
             @Override
-            public void onEvent(int eventType, Bundle params) {
+            public void onPartialResults(Bundle partialResults) {
+            }
 
+            @Override
+            public void onEvent(int eventType, Bundle params) {
             }
         });
     }
