@@ -31,7 +31,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CLIENT_ID = "";
+    private static final String CLIENT_ID = "2b1adf5ad6cd4c7aafe0acadea34ab1f";
     private static final String REDIRECT_URI = "https://spotibot.com/callback";
     private SpotifyAppRemote mSpotifyAppRemote;
     private SpeechRecognizer speechRecognizer;
