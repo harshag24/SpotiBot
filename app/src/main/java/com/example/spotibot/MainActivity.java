@@ -97,10 +97,21 @@ public class MainActivity extends AppCompatActivity {
                     string = matches.get(0);
                     textView.setText(string);
 
-                    if(string.contains("playback"))
-                    {
-                        connected();
+                    if(string.contains("playback")) {
+                        mSpotifyAppRemote.getPlayerApi().skipPrevious();
                     }
+                    else if(string.contains("pause")){
+                        mSpotifyAppRemote.getPlayerApi().pause();
+                    }
+                    else if(string.contains("resume")){
+                        mSpotifyAppRemote.getPlayerApi().resume();
+                    }
+                    else if(string.contains("next")){
+                        mSpotifyAppRemote.getPlayerApi().skipNext();
+                    }
+//                    else if(string.contains("shuffle")){
+//                        mSpotifyAppRemote.getPlayerApi().toggleShuffle();
+//                    }
                 }
             }
 
@@ -146,11 +157,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Not able to connect!!" , Toast.LENGTH_LONG);
                     }
                 });
-    }
-
-    private void connected() {
-        // Then we will write some more code here.
-        mSpotifyAppRemote.getPlayerApi().skipPrevious();
     }
 
     @Override
