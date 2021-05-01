@@ -31,14 +31,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CLIENT_ID = "2b1adf5ad6cd4c7aafe0acadea34ab1f";
+    private static final String CLIENT_ID = "";
     private static final String REDIRECT_URI = "https://spotibot.com/callback";
     private SpotifyAppRemote mSpotifyAppRemote;
-    Button start , stop;
     private SpeechRecognizer speechRecognizer;
     private Intent intentRecognizer;
     private TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,27 +53,22 @@ public class MainActivity extends AppCompatActivity {
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle params) {
-
             }
 
             @Override
             public void onBeginningOfSpeech() {
-
             }
 
             @Override
             public void onRmsChanged(float rmsdB) {
-
             }
 
             @Override
             public void onBufferReceived(byte[] buffer) {
-
             }
 
             @Override
             public void onEndOfSpeech() {
-
             }
 
             @Override
@@ -108,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
                     else if(string.contains("shuffle")){
                         mSpotifyAppRemote.getPlayerApi().setShuffle(true);
                     }
-//                    else{
-//                        textView.setText("Didn't get that! Try Again!");
-//                    }
+                    else{
+                        textView.setText("Didn't get that! Try Again!");
+                    }
                 }
             }
 
@@ -124,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void StartButton(View view){
+    public void StartButton(View view) {
         textView.setText("Listening...");
         speechRecognizer.startListening(intentRecognizer);
     }
