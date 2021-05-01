@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpotiBot</string>
+    <string name="support">Supported Commands - Playback, Pause, Resume and Next</string>
 </resources>

@@ -31,7 +31,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CLIENT_ID = "";
+    private static final String CLIENT_ID = "2b1adf5ad6cd4c7aafe0acadea34ab1f";
     private static final String REDIRECT_URI = "https://spotibot.com/callback";
     private SpotifyAppRemote mSpotifyAppRemote;
     Button start , stop;
@@ -109,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
                     else if(string.contains("next")){
                         mSpotifyAppRemote.getPlayerApi().skipNext();
                     }
+                    else{
+                        textView.setText("Didn't get that! Try Again!");
+                    }
 //                    else if(string.contains("shuffle")){
 //                        mSpotifyAppRemote.getPlayerApi().toggleShuffle();
 //                    }
@@ -123,7 +126,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void StartButton(View view){
-    speechRecognizer.startListening(intentRecognizer);
+        textView.setText("Listening...");
+        speechRecognizer.startListening(intentRecognizer);
     }
 
 //    public void StopButton(View view){
